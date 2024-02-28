@@ -19,7 +19,7 @@ const allPosts = await Astro.glob("../content/technology/*.md");
       .map((post) => (
         <a
           class="underline underline-offset-2 hover:text-gray-300 cursor-pointer w-fit"
-          href={`blog/${post.frontmatter.slug}`}
+          href={`blog/technology/${post.frontmatter.slug}`}
         >
           {post.frontmatter.title}
         </a>
