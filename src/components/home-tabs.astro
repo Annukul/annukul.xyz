@@ -1,0 +1,54 @@
+---
+const { pathname } = Astro.url;
+
+const className = (path: string) => {
+  switch (path) {
+    case "/":
+      return "translate-x-0";
+    case "/blog":
+      return "translate-x-[5.7rem]";
+    case "/work":
+      return "translate-x-[11.4rem]";
+    case "/projects":
+      return "translate-x-[17.1rem]";
+  }
+};
+---
+
+<div
+  class="fixed w-[370px] h-14 bottom-4 rounded-md border-[0.5px] p-2 flex justify-between backdrop-filter backdrop-blur-lg bg-opacity-30 border-gray-800 text-gray-300 font-medium"
+>
+  <div class="relative w-full flex justify-between items-center">
+    <div
+      class={`
+        absolute h-10 z-10 top-0 flex items-center justify-center rounded-md p-2 bg-gray-800 w-20 transition-transform transform duration-200 cursor-pointer
+        ${className(pathname)}
+      `}
+    >
+    </div>
+    <a
+      class="flex justify-center items-center rounded-md h-full p-2 hover:underline w-20 z-20"
+      href="/"
+    >
+      Home
+    </a>
+    <a
+      class="flex justify-center items-center rounded-md h-full p-2 hover:underline w-20 z-20"
+      href="/blog"
+    >
+      Blog
+    </a>
+    <a
+      class="flex justify-center items-center rounded-md h-full p-2 hover:underline w-20 z-20"
+      href="/work"
+    >
+      Work
+    </a>
+    <a
+      class="flex justify-center items-center rounded-md h-full p-2 hover:underline w-20 z-20"
+      href="/projects"
+    >
+      Projects
+    </a>
+  </div>
+</div>

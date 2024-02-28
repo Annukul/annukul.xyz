@@ -1,0 +1,35 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import { fade } from "astro:transitions";
+
+type Props = {
+  title: string;
+  description: string;
+  date: string;
+  author: string;
+  image?: string;
+};
+
+const { title, date, author, description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <ViewTransitions transition:animate={fade({ duration: "0.2s" })} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+
+  <body>
+    <div class="w-3/4 p-8 text-gray-300 max-w-container px-4">
+      <header class="flex flex-col gap-3 items-center justify-between">
+        <p class="text-3xl">{title}</p>
+        <div class="flex gap-6 text-gray-400">
+          <p>by <span class="underline underline-offset-2">{author}</span></p>
+          <p>{date}</p>
+        </div>
+      </header>
+      <slot />
+    </div>
+  </body>
+</html>

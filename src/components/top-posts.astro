@@ -1,0 +1,23 @@
+---
+const allPosts = await Astro.glob("../content/blog/*.md");
+---
+
+<div class="w-ful flex flex-col gap-4">
+  <p class="text-xl text-gray-200">New posts</p>
+  {
+    allPosts
+      .sort(
+        (a, b) =>
+          +new Date(b.frontmatter.pubDate) - +new Date(a.frontmatter.pubDate)
+      )
+      .splice(0, 5)
+      .map((post) => (
+        <a
+          class="underline underline-offset-2 hover:text-gray-300 cursor-pointer w-fit"
+          href={`blog/${post.frontmatter.slug}`}
+        >
+          {post.frontmatter.title}
+        </a>
+      ))
+  }
+</div>

@@ -1,0 +1,37 @@
+---
+const allPosts = await Astro.glob("../../../content/thoughts/*.md");
+const title = "Blog";
+import Layout from "../../../layouts/Layout.astro";
+import BlogLayout from "../../../layouts/BlogLayout.astro";
+---
+
+<Layout {title} description="List of blogs written by me.">
+  <BlogLayout {title} description="List of blogs written by me.">
+    <div class="w-full flex flex-col gap-8">
+      {
+        allPosts
+          .sort(
+            (a, b) =>
+              +new Date(b.frontmatter.pubDate) -
+              +new Date(a.frontmatter.pubDate)
+          )
+          .map((post) => (
+            <div class="flex gap-1 items-start">
+              <span class="text-2xl text-gray-400">➤</span>
+              <a
+                class="leading-relaxed hover:text-gray-200 cursor-pointer w-fit flex flex-col gap-2"
+                href={`thoughts/${post.frontmatter.slug}`}
+              >
+                <p class="hover:underline underline-offset-2 text-slate-300 text-xl">
+                  {post.frontmatter.title}
+                </p>
+                <p class="text-sm text-gray-400">
+                  {post.frontmatter.description}
+                </p>
+              </a>
+            </div>
+          ))
+      }
+    </div>
+  </BlogLayout>
+</Layout>

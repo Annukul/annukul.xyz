@@ -1,0 +1,13 @@
+---
+const title = "Blog";
+import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+---
+
+<Layout {title} description="List of blogs written by me.">
+  <BlogLayout {title} description="List of blogs written by me.">
+   <div class="text-gray-400 p-8 text-lg">
+     <p>Click on a category and see what you find there! :)</p>
+   </div>
+  </BlogLayout>
+</Layout>
