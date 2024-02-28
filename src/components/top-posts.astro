@@ -1,9 +1,14 @@
 ---
-const allPosts = await Astro.glob("../content/blog/*.md");
+const allPosts = await Astro.glob("../content/technology/*.md");
 ---
 
 <div class="w-ful flex flex-col gap-4">
-  <p class="text-xl text-gray-200">New posts</p>
+  <p class="text-lg text-gray-200">
+    New posts in <a
+      href="/blog/technology"
+      class="font-medium italic underline underline-offset-2">Technology:</a
+    >
+  </p>
   {
     allPosts
       .sort(
